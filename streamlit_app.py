@@ -46,20 +46,20 @@ def main():
         st.pyplot(fig)
         
         moving_avg_option = st.checkbox("Apply Moving Average")
-        
+        data_for_ds=data[selected_column]
         # Show moving average options if checked
         if moving_avg_option:
             moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
             data_change = data[selected_column].rolling(window=moving_avg_window).mean()
             #st.write("### Moving Average Data:")
             #st.write(data.head())  # Display moving average data
-
+            data_for_ds=data_change
             # Checkbox to remove moving average baseline
             remove_baseline_option = st.checkbox("Remove Moving Average Baseline")
-
+        
             if remove_baseline_option:
                 data_change = data[selected_column] - data_change
-    
+                data_for_ds=data_change
             # Get the range of transformed data to plot
             plot_data_change = data_change.iloc[start_index:end_index]
     
@@ -83,7 +83,7 @@ def main():
         # Show downsampling options if checked
         if downsample_option:
             downsample_factor = st.selectbox("Select Downsampling Factor", [2, 3, 4, 6])
-            data_downsample = data[selected_column][::downsample_factor]
+            data_downsample = data_for_ds[::downsample_factor]
             plot_data2 = data_downsample.iloc[start_index:end_index]
 
             # Plot the data using Matplotlib
