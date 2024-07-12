@@ -32,7 +32,7 @@ def main():
         downsample_factor = st.selectbox("Select Downsampling Factor", [None, 2, 3, 4, 6])
 
         # Select moving average window size
-        moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
+        moving_avg_window = st.number_input("Select Moving Average Window Size", min_value=0, step=1, value=1)
 
         # Downsampling
         if downsample_factor:
