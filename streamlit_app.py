@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-pip install matplotlib
+
 
 def downsample(data, factor):
     return data[::factor]
