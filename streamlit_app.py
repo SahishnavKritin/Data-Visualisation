@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def main():
-    st.title("CSV File Upload and Data Processing")
+    st.title("Data Visualisation of CSV file")
 
     # File uploader widget
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
