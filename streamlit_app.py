@@ -45,18 +45,18 @@ def main():
         end_index = st.number_input("End Index", min_value=0, max_value=len(data)-1, step=1, value=len(data)-1)
 
         # Get the range of transformed data to plot
-        plot_data = data.iloc[start_index:end_index]
+        plot_data = data[selected_column][start_index:end_index]
 
         # Plot the data using Matplotlib
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.plot(plot_data.index, plot_data[selected_column], label=selected_column)
+        ax.plot(plot_data.index, plot_data, label=selected_column)
         ax.set_xlabel("Index")
         ax.set_ylabel(selected_column)
         ax.set_title(f"Plot of {selected_column}")
 
         # Set y-axis limits based on data range
-        y_min = plot_data[selected_column].min()
-        y_max = plot_data[selected_column].max()
+        y_min = plot_data.min()
+        y_max = plot_data.max()
         ax.set_ylim(y_min, y_max)
 
         # Display plot in Streamlit
