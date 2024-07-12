@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-
 def downsample(data, factor):
     return data[::factor]
 
@@ -48,13 +47,7 @@ def main():
 
         # Plot the data
         if st.button("Plot Data"):
-            plt.figure(figsize=(10, 5))
-            plt.plot(data[selected_column][start_index:end_index])
-            plt.xlabel("Index")
-            plt.ylabel(selected_column)
-            plt.title(f"{selected_column} Data")
-            plt.grid(True)
-            st.pyplot(plt)
+            st.line_chart(data[selected_column][start_index:end_index])
 
 if __name__ == "__main__":
     main()
