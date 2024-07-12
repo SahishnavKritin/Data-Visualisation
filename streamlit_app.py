@@ -28,26 +28,35 @@ def main():
         columns = data.columns
         selected_column = st.selectbox("Select Column to Plot", columns)
 
-        # Select downsampling factor
-        downsample_factor = st.selectbox("Select Downsampling Factor", [None, 2, 3, 4, 6])
+        # Checkbox for downsampling
+        downsample_option = st.checkbox("Apply Downsampling")
 
-        # Select moving average window size
-        moving_avg_window = st.number_input("Select Moving Average Window Size", min_value=0, step=1, value=1)
-
-        # Downsampling
-        if downsample_factor:
+        # Show downsampling options if checked
+        if downsample_option:
+            downsample_factor = st.selectbox("Select Downsampling Factor", [2, 3, 4, 6])
             data[selected_column] = downsample(data[selected_column], downsample_factor)
 
-        # Moving average
-        data[selected_column] = moving_average(data[selected_column], moving_avg_window)
+        # Checkbox for moving average
+        moving_avg_option = st.checkbox("Apply Moving Average")
+
+        # Show moving average options if checked
+        if moving_avg_option:
+            moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
+            data[selected_column] = moving_average(data[selected_column], moving_avg_window)
 
         # Select plot segment
         start_index = st.number_input("Start Index", min_value=0, max_value=len(data)-1, step=1, value=0)
         end_index = st.number_input("End Index", min_value=0, max_value=len(data)-1, step=1, value=len(data)-1)
 
+        # Get the y-axis range
+        plot_data = data[selected_column][start_index:end_index]
+        y_min = plot_data.min() - 0.05 * (plot_data.max() - plot_data.min())
+        y_max = plot_data.max() + 0.05 * (plot_data.max() - plot_data.min())
+
         # Plot the data
         if st.button("Plot Data"):
-            st.line_chart(data[selected_column][start_index:end_index])
+            st.line_chart(plot_data)
+            st.write(f"Y-axis range: [{y_min}, {y_max}]")
 
 if __name__ == "__main__":
     main()
