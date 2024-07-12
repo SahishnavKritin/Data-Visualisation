@@ -72,7 +72,7 @@ def main():
 
             # Plot the data using Matplotlib
             fig, ax = plt.subplots(figsize=(10, 6))
-            ax.plot(plot_data2.index, plot_data2[selected_column], label=selected_column)
+            ax.plot(plot_data2.index, plot_data2, label=selected_column)
             ax.set_xlabel("Index")
             ax.set_ylabel(selected_column)
             ax.set_title(f"Plot of {selected_column}")
