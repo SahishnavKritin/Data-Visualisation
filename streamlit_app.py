@@ -53,7 +53,7 @@ def main():
 
         # Plot the data
         if st.button("Plot Data"):
-            st.line_chart(plot_data)
+            st.line_chart(plot_data,use_container_width=True)
 
 if __name__ == "__main__":
     main()
