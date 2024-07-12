@@ -39,8 +39,8 @@ def main():
         if moving_avg_option:
             moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
             data["moving_avg"] = data[selected_column].rolling(window=moving_avg_window).mean()
-            st.write("### Moving Average Data:")
-            st.write(data.head())  # Display moving average data
+            #st.write("### Moving Average Data:")
+            #st.write(data.head())  # Display moving average data
 
             # Checkbox to remove moving average baseline
             remove_baseline_option = st.checkbox("Remove Moving Average Baseline")
