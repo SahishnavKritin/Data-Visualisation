@@ -57,7 +57,7 @@ def main():
 
         # Plot the data
         if st.button("Plot Data"):
-            st.line_chart(plot_data)
+            st.line_chart(plot_data, use_container_width=True, ylim=(y_min, y_max))
             st.write(f"Y-axis range: [{y_min}, {y_max}]")
 
 if __name__ == "__main__":
