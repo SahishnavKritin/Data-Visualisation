@@ -58,7 +58,7 @@ def main():
             remove_baseline_option = st.checkbox("Remove Moving Average Baseline")
 
             if remove_baseline_option:
-                data_change = data[selected_column] - data["moving_avg"]
+                data_change = data[selected_column] - data_change
     
             # Get the range of transformed data to plot
             plot_data_change = data_change.iloc[start_index:end_index]
