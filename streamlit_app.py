@@ -59,11 +59,11 @@ def main():
         # Create Altair chart
         chart = alt.Chart(data.iloc[start_index:end_index]).mark_line().encode(
             x='index',
-            y=alt.Y(selected_column, scale=alt.Scale(domain=[y_min, y_max]))
+            y=selected_column
         ).properties(
             width=600,
             height=400
-        )
+        ).interactive()
 
         # Display Altair chart using st.altair_chart
         st.altair_chart(chart, use_container_width=True)
