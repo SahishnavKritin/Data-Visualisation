@@ -36,7 +36,7 @@ def main():
         moving_avg_option = st.checkbox("Apply Moving Average")
 
         # Show moving average options if checked
-        if moving_avg_option:
+        '''if moving_avg_option:
             moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
             data["moving_avg"] = data[selected_column].rolling(window=moving_avg_window).mean()
             #st.write("### Moving Average Data:")
@@ -46,7 +46,7 @@ def main():
             remove_baseline_option = st.checkbox("Remove Moving Average Baseline")
 
             if remove_baseline_option:
-                data[selected_column] = data[selected_column] - data["moving_avg"]
+                data[selected_column] = data[selected_column] - data["moving_avg"]'''
 
         # Select plot segment
         start_index = st.number_input("Start Index", min_value=0, max_value=len(data)-1, step=1, value=0)
