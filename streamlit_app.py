@@ -48,10 +48,10 @@ def main():
         start_index = st.number_input("Start Index", min_value=0, max_value=len(data)-1, step=1, value=0)
         end_index = st.number_input("End Index", min_value=0, max_value=len(data)-1, step=1, value=len(data)-1)
 
-        # Get the range of data to plot
+        # Get the range of transformed data to plot
         plot_data = data[selected_column][start_index:end_index]
 
-        # Compute y-axis range based on the plotted data
+        # Compute y-axis range based on the transformed data
         y_min = plot_data.min()
         y_max = plot_data.max()
 
