@@ -60,5 +60,5 @@ def main():
         y_max = plot_data[selected_column].max()
 
         # Display Altair chart with manually set y-axis range
-        st.altair_chart(chart, use_container_width=True, use_container_width=True, use_container_width=True, y_axis=True)
+        st.altair_chart(chart, use_container_width=True, y_axis=True)
 
