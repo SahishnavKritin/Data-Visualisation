@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 def downsample(data, factor):
     return data[::factor]
@@ -55,10 +56,17 @@ def main():
         y_min = plot_data.min()
         y_max = plot_data.max()
 
-        # Plot the data
-        if st.button("Plot Data"):
-            st.line_chart(plot_data)
-            st.write(f"Y-axis range: [{y_min}, {y_max}]")
+        # Create Altair chart
+        chart = alt.Chart(data.iloc[start_index:end_index]).mark_line().encode(
+            x='index',
+            y=alt.Y(selected_column, scale=alt.Scale(domain=[y_min, y_max]))
+        ).properties(
+            width=600,
+            height=400
+        )
+
+        # Display Altair chart using st.altair_chart
+        st.altair_chart(chart, use_container_width=True)
 
 if __name__ == "__main__":
     main()
