@@ -67,12 +67,12 @@ def main():
         # Show downsampling options if checked
         if downsample_option:
             downsample_factor = st.selectbox("Select Downsampling Factor", [2, 3, 4, 6])
-            data[selected_column] = data[selected_column][::downsample_factor]
-            plot_data = data.iloc[start_index:end_index]
+            data_downsample = data[selected_column][::downsample_factor]
+            plot_data2 = data_downsample.iloc[start_index:end_index]
 
             # Plot the data using Matplotlib
             fig, ax = plt.subplots(figsize=(10, 6))
-            ax.plot(plot_data.index, plot_data[selected_column], label=selected_column)
+            ax.plot(plot_data2.index, plot_data2[selected_column], label=selected_column)
             ax.set_xlabel("Index")
             ax.set_ylabel(selected_column)
             ax.set_title(f"Plot of {selected_column}")
