@@ -54,11 +54,6 @@ def main():
         ax.set_ylabel(selected_column)
         ax.set_title(f"Plot of {selected_column}")
 
-        # Set y-axis limits based on data range
-        y_min = plot_data.min()
-        y_max = plot_data.max()
-        ax.set_ylim(y_min, y_max)
-
         # Display plot in Streamlit
         st.pyplot(fig)
 
