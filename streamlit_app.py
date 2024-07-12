@@ -40,12 +40,12 @@ def main():
             moving_avg_window = st.number_input("Select Moving Average Window Size (4 or above)", min_value=4, step=1, value=4)
             data[selected_column] = data[selected_column].rolling(window=moving_avg_window).mean()
 
-        # Select plot segment
-        start_index = st.number_input("Start Index", min_value=0, max_value=len(data)-1, step=1, value=0)
-        end_index = st.number_input("End Index", min_value=0, max_value=len(data)-1, step=1, value=len(data)-1)
-
         # Get the range of transformed data to plot
         plot_data = data[selected_column][start_index:end_index]
+
+        # Select plot segment
+        start_index = st.number_input("Start Index", min_value=0, max_value=len(plot_data)-1, step=20, value=0)
+        end_index = st.number_input("End Index", min_value=0, max_value=len(plot_data)-1, step=20, value=len(data)-1)
 
         # Plot the data using Matplotlib
         fig, ax = plt.subplots(figsize=(10, 6))
