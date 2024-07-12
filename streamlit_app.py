@@ -84,7 +84,7 @@ def main():
         if downsample_option:
             downsample_factor = st.selectbox("Select Downsampling Factor", [2, 3, 4, 6])
             data_downsample = data_for_ds[::downsample_factor]
-            plot_data2 = data_downsample.iloc[start_index:end_index]
+            plot_data2 = data_downsample.iloc[start_index/downsample_factor:end_index/downsample_factor]
 
             # Plot the data using Matplotlib
             fig, ax = plt.subplots(figsize=(10, 6))
