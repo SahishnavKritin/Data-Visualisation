@@ -12,7 +12,7 @@ def main():
         data = pd.read_csv(uploaded_file)
         
         # Display the CSV file
-        st.write(data)
+        #st.write(data)
 
 if __name__ == "__main__":
     main()
