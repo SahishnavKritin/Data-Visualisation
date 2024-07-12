@@ -51,14 +51,9 @@ def main():
         # Get the range of transformed data to plot
         plot_data = data[selected_column][start_index:end_index]
 
-        # Compute y-axis range based on the transformed data
-        y_min = plot_data.min()
-        y_max = plot_data.max()
-
         # Plot the data
         if st.button("Plot Data"):
-            st.line_chart(plot_data, use_container_width=True, ylim=(y_min, y_max))
-            st.write(f"Y-axis range: [{y_min}, {y_max}]")
+            st.line_chart(plot_data)
 
 if __name__ == "__main__":
     main()
