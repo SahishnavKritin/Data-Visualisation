@@ -48,10 +48,12 @@ def main():
         start_index = st.number_input("Start Index", min_value=0, max_value=len(data)-1, step=1, value=0)
         end_index = st.number_input("End Index", min_value=0, max_value=len(data)-1, step=1, value=len(data)-1)
 
-        # Get the y-axis range
+        # Get the range of data to plot
         plot_data = data[selected_column][start_index:end_index]
-        y_min = plot_data.min() - 0.05 * (plot_data.max() - plot_data.min())
-        y_max = plot_data.max() + 0.05 * (plot_data.max() - plot_data.min())
+
+        # Compute y-axis range based on the plotted data
+        y_min = plot_data.min()
+        y_max = plot_data.max()
 
         # Plot the data
         if st.button("Plot Data"):
