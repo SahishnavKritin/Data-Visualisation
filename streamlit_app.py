@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+import matplotlib.pyplot as plt
+import numpy as np
 
 def main():
     st.title("CSV File Upload and Data Processing")
@@ -46,17 +47,20 @@ def main():
         # Get the range of transformed data to plot
         plot_data = data.iloc[start_index:end_index]
 
-        # Create Altair chart
-        chart = alt.Chart(plot_data).mark_line().encode(
-            x='index',
-            y=selected_column
-        ).properties(
-            width=600,
-            height=400
-        )
+        # Plot the data using Matplotlib
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(plot_data.index, plot_data[selected_column], label=selected_column)
+        ax.set_xlabel("Index")
+        ax.set_ylabel(selected_column)
+        ax.set_title(f"Plot of {selected_column}")
 
-        # Display Altair chart using st.altair_chart
-        st.altair_chart(chart, use_container_width=True)
+        # Set y-axis limits based on data range
+        y_min = plot_data[selected_column].min()
+        y_max = plot_data[selected_column].max()
+        ax.set_ylim(y_min, y_max)
+
+        # Display plot in Streamlit
+        st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
